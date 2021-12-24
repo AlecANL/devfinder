@@ -1,0 +1,19 @@
+.btn {
+  @apply inline-flex
+  gap-2
+  capitalize
+  rounded-lg
+  font-bold
+  text-base
+  px-4
+  py-3
+  md:px-6;
+}
+.color-primary {
+  @apply bg-color-blue
+  text-color-white;
+}
+
+.btn-active {
+  @apply active:scale-95;
+}

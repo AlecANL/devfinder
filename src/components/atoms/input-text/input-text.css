@@ -1,0 +1,7 @@
+.input {
+  @apply placeholder:text-color-azure
+  text-sm
+  py-2
+  flex-1
+  sm:text-lg;
+}

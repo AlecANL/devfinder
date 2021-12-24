@@ -1,0 +1,3 @@
+.picture {
+  @apply flex-shrink-0;
+}

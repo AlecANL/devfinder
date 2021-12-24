@@ -1,0 +1,16 @@
+.heading {
+  @apply font-bold;
+}
+
+.heading-h1 {
+  @apply text-2xl;
+}
+.heading-h2 {
+  @apply text-xl;
+}
+.heading-h3 {
+  @apply text-base;
+}
+.heading-h4 {
+  @apply text-xs;
+}
