@@ -5,3 +5,7 @@
   flex-1
   sm:text-lg;
 }
+
+.dark .input {
+  @apply bg-color-port-gore placeholder:text-color-white;
+}

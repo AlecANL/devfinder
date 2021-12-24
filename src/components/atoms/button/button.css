@@ -17,3 +17,9 @@
 .btn-active {
   @apply active:scale-95;
 }
+.dark .color-default {
+  @apply text-color-white;
+}
+.light .color-default {
+  @apply text-color-tuna;
+}

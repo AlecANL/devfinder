@@ -1,0 +1,11 @@
+.app {
+  @apply min-h-screen transition;
+}
+
+.light {
+  @apply bg-color-magnolia;
+}
+
+.dark {
+  @apply bg-color-mirage;
+}

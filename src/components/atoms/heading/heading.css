@@ -14,3 +14,10 @@
 .heading-h4 {
   @apply text-xs;
 }
+.dark .heading {
+  @apply text-color-white;
+}
+
+.light .heading {
+  @apply text-color-tuna;
+}

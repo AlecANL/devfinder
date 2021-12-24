@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply min-h-screen font-mono-space bg-color-magnolia
+  @apply min-h-screen font-mono-space transition-all 
   /* @apply rounded-b-lg shadow-md; */;
 }
