@@ -2,5 +2,6 @@
   @apply flex 
   justify-between 
   items-center 
-  px-6 py-7;
+  pl-4
+  py-7;
 }

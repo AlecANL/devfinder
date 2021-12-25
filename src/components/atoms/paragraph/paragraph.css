@@ -1,0 +1,7 @@
+.paragraph {
+  @apply text-sm text-color-walkawa-gray;
+}
+
+.dark .paragraph {
+  @apply text-color-white-2;
+}

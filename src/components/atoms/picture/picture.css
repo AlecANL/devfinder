@@ -1,3 +1,13 @@
 .picture {
-  @apply flex-shrink-0;
+  @apply flex-shrink-0 inline-block;
+}
+
+.avatar {
+  @apply float-left md:float-none;
+}
+
+.avatar img {
+  @apply rounded-full inline-block w-20 h-20  md:w-28 md:h-28;
+  /* inline-size: 70px; */
+  /* block-size: 70px; */
 }

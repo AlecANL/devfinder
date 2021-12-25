@@ -9,3 +9,25 @@
 .dark {
   @apply bg-color-mirage;
 }
+.main {
+  @apply bg-color-white-2 
+  mt-6 
+  px-6 
+  py-8 
+  rounded-2xl
+  gap-4
+  md:flex
+  md:gap-9
+  md:px-12;
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+}
+
+.app-content {
+  @apply h-screen xs:mx-4;
+}
+.dark .main {
+  @apply bg-color-port-gore;
+}
+.u-info {
+  @apply flex flex-col;
+}

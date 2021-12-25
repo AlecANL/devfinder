@@ -1,0 +1,8 @@
+.user-contact {
+  @apply pt-7;
+}
+
+.user-contact ul {
+  @apply grid
+    sm:grid-cols-2;
+}

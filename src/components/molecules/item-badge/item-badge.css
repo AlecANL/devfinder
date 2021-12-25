@@ -1,0 +1,8 @@
+.item-badge {
+  @apply text-color-azure
+  flex
+    items-center
+    gap-5
+    py-1
+    hover:text-color-walkawa-gray;
+}

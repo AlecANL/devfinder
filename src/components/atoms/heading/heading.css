@@ -6,7 +6,7 @@
   @apply text-2xl;
 }
 .heading-h2 {
-  @apply text-xl;
+  @apply text-base sm:text-2xl;
 }
 .heading-h3 {
   @apply text-base;

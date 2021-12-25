@@ -1,0 +1,38 @@
+.user {
+  @apply flex-1;
+}
+
+.user .u-info {
+  @apply pl-5
+  md:grid
+  md:grid-cols-2
+  md:pl-0;
+  grid-template-areas: 'name date' 'nick nick';
+}
+.user .name {
+  grid-area: name;
+}
+.user .nick {
+  @apply text-color-blue;
+  grid-area: nick;
+}
+.user .date {
+  @apply justify-self-end text-color-walkawa-gray;
+  grid-area: date;
+}
+.user .bio {
+  @apply py-8 
+  md:pt-5 
+  md:pb-8;
+}
+
+.user-followers {
+  @apply bg-color-magnolia
+  py-4
+  px-4
+  rounded-xl;
+}
+
+.dark .user .date {
+  @apply text-color-white-2;
+}

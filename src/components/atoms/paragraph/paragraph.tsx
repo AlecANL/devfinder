@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './paragraph.css'
+import classnames from 'classnames'
 
 interface IParagraphProps {
   children: React.ReactNode
@@ -10,5 +11,5 @@ interface IParagraphProps {
 export function Paragraph(props: IParagraphProps) {
   const { children, className } = props
 
-  return <p className={className}>{children}</p>
+  return <p className={classnames('paragraph', className)}>{children}</p>
 }
