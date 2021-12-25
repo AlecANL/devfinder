@@ -6,3 +6,7 @@
     py-1
     hover:text-color-walkawa-gray;
 }
+
+.dark .item-badge {
+  @apply text-color-white-2;
+}

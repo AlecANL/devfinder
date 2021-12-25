@@ -1,5 +1,8 @@
 .table {
-  @apply w-full;
+  @apply w-full text-color-mirage;
+}
+.dark .table {
+  @apply text-color-white-2;
 }
 .table-head {
   @apply capitalize

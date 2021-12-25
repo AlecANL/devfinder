@@ -28,6 +28,8 @@ import { UserContact } from './components/molecules/user-contact'
 
 import './app.css'
 import { ItemBadge } from './components/molecules/item-badge'
+import { Ellipsis } from './components/atoms/ellipsis'
+import { convertNumber } from './utils/convertNumber'
 
 const tableHeaders = ['repos', 'followers', 'following']
 
@@ -35,7 +37,7 @@ function App() {
   const [theme, setTheme] = React.useState<string>('dark')
   const [isDarkMode, setDarkMode] = React.useState<boolean>(true)
 
-  const [user] = React.useState<IUser>(userMocks)
+  const [user] = React.useState<IUser>(userMocks[1])
 
   function saveToStorage(isDark: boolean) {
     const themeChanged = !isDark ? 'light' : 'dark'
@@ -67,7 +69,7 @@ function App() {
   }, [])
 
   return (
-    <div className={classnames('app', 'light')}>
+    <div className={classnames('app', theme)}>
       <div className='app-content'>
         <Wrapper>
           <Header>
@@ -109,7 +111,15 @@ function App() {
               <div className='user-profile'>
                 <div className='u-info'>
                   <Heading type='h2'>{user.name}</Heading>
-                  <span className='nick'>@{user.login}</span>
+                  <a
+                    rel='noreferrer'
+                    target='_blank'
+                    className='nick'
+                    href={`https://github.com/${user.login}`}
+                  >
+                    @{user.login}
+                  </a>
+                  {/* <span className='nick'></span> */}
                   <span className='date'>joined 25 jan 2011</span>
                 </div>
                 <div className='bio'>
@@ -124,13 +134,13 @@ function App() {
                 </Table.Head>
                 <Table.Body>
                   <span className='font-bold sm:text-2xl'>
-                    {user.public_repos}
+                    {convertNumber(user.public_repos, 1)}
                   </span>
                   <span className='font-bold sm:text-2xl'>
-                    {user.followers}
+                    {convertNumber(user.followers, 1)}
                   </span>
                   <span className='font-bold sm:text-2xl'>
-                    {user.following}
+                    {convertNumber(user.following, 1)}
                   </span>
                 </Table.Body>
               </Table>
@@ -138,13 +148,13 @@ function App() {
                 <ul>
                   {user.location && (
                     <ItemBadge src={LocationIcon} alt='icon location'>
-                      <span>{user.location}</span>
+                      <Ellipsis>{user.location}</Ellipsis>
                     </ItemBadge>
                   )}
                   {user.blog && (
                     <ItemBadge src={WebsiteIcon} alt='website icon'>
                       <a rel='noreferrer' target='_blank' href={user.blog}>
-                        {user.blog}
+                        <Ellipsis>{user.blog}</Ellipsis>
                       </a>
                     </ItemBadge>
                   )}
@@ -158,16 +168,18 @@ function App() {
                           : '#'
                       }`}
                     >
-                      {`${
-                        user.twitter_username
-                          ? user.twitter_username
-                          : 'not available'
-                      }`}
+                      <Ellipsis>
+                        {`${
+                          user.twitter_username
+                            ? user.twitter_username
+                            : 'not available'
+                        }`}
+                      </Ellipsis>
                     </a>
                   </ItemBadge>
                   {user.company && (
                     <ItemBadge src={CompanyIcon} alt='company icon'>
-                      <span>{user.location}</span>
+                      <Ellipsis>{user.location}</Ellipsis>
                     </ItemBadge>
                   )}
                 </ul>

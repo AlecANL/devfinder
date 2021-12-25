@@ -1,0 +1,6 @@
+.ellipsis {
+  @apply text-ellipsis 
+  overflow-hidden 
+  whitespace-nowrap 
+  block;
+}

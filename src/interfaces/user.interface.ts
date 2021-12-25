@@ -18,11 +18,11 @@ export interface IUser {
   type: string
   site_admin: boolean
   name: string
-  company: null
+  company: null | string
   blog: string
   location: string
-  email: null
-  hireable: null
+  email: null | string
+  hireable: null | string
   bio: string
   twitter_username: string
   public_repos: number

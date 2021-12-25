@@ -33,6 +33,10 @@
   rounded-xl;
 }
 
+.dark .user-followers {
+  @apply bg-color-mirage;
+}
+
 .dark .user .date {
   @apply text-color-white-2;
 }
