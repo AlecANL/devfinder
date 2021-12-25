@@ -11,9 +11,5 @@ interface IUserContactProps {
 export function UserContact(props: IUserContactProps) {
   const { children, className } = props
 
-  return (
-    <section className={classnames('user-contact', className)}>
-      {children}
-    </section>
-  )
+  return <div className={classnames('user-contact', className)}>{children}</div>
 }

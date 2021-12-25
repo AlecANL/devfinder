@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 import './picture.css'
 
-interface IPictureProps extends React.ImgHTMLAttributes<HTMLPictureElement> {
+interface IPictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string
   alt: string
   width?: number
@@ -15,8 +15,8 @@ export function Picture(props: IPictureProps) {
   const { src, alt, className, ...otherProps } = props
 
   return (
-    <picture className={classnames('picture', className)} {...otherProps}>
-      <img src={src} alt={alt} />
+    <picture className={classnames('picture', className)}>
+      <img src={src} alt={alt} {...otherProps} />
     </picture>
   )
 }

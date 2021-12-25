@@ -14,9 +14,7 @@ interface ITableProps {
 export function Table(props: ITableProps) {
   const { children, className } = props
 
-  return (
-    <section className={classnames('table', className)}>{children}</section>
-  )
+  return <div className={classnames('table', className)}>{children}</div>
 }
 
 Table.Head = TableHead

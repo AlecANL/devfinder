@@ -11,9 +11,5 @@ interface ITableBodyProps {
 export function TableBody(props: ITableBodyProps) {
   const { children, className } = props
 
-  return (
-    <section className={classnames('table-body', className)}>
-      {children}
-    </section>
-  )
+  return <div className={classnames('table-body', className)}>{children}</div>
 }
