@@ -1,22 +1,36 @@
 import React from 'react'
 import classnames from 'classnames'
-import axios, { AxiosResponse } from 'axios'
 
 import { Paragraph } from './components/atoms/paragraph/paragraph'
 import { InputText } from './components/atoms/input-text'
 import { Ellipsis } from './components/atoms/ellipsis'
 import { Picture } from './components/atoms/picture'
 import { Heading } from './components/atoms/heading'
+import { Loading } from './components/atoms/loading'
 import { Button } from './components/atoms/button'
 
 import { UserContact } from './components/molecules/user-contact'
 import { ItemBadge } from './components/molecules/item-badge'
+import { NotFound } from './components/molecules/not-found'
 import { Form } from './components/molecules/form/form'
 import { Header } from './components/molecules/header'
 import { Table } from './components/molecules/table'
 
 import { Wrapper } from './components/layout/wrapper'
 import { Container } from './components/layout/container'
+
+import { useDarkMode } from './hooks/useDarkMode'
+
+import { getUserToGithub } from './service/user.service'
+
+import { convertNumber } from './utils/convertNumber'
+import { formatDate } from './utils/formatDate'
+
+import { userMocks } from './mocks/user.mock'
+
+import { IAppState } from './interfaces/user.interface'
+
+import { tableHeaders } from './constants'
 
 import MoonIcon from './assets/icons/icon-moon.svg'
 import SunIcon from './assets/icons/icon-sun.svg'
@@ -26,22 +40,10 @@ import LocationIcon from './assets/icons/icon-location.svg'
 import TwitterIcon from './assets/icons/icon-twitter.svg'
 import WebsiteIcon from './assets/icons/icon-website.svg'
 
-import { userMocks } from './mocks/user.mock'
-
-import { IAppState, IUser } from './interfaces/user.interface'
-
-import { convertNumber } from './utils/convertNumber'
-import { formatDate } from './utils/formatDate'
-
 import './app.css'
-import { Loading } from './components/atoms/loading'
-import { NotFound } from './components/molecules/not-found'
-
-const tableHeaders = ['repos', 'followers', 'following']
 
 function App() {
-  const [theme, setTheme] = React.useState<string>('dark')
-  const [isDarkMode, setDarkMode] = React.useState<boolean>(true)
+  const { theme, isDarkMode, handleToggleTheme } = useDarkMode()
   const [isFormValid, setFormValid] = React.useState<boolean>(true)
   const [state, setState] = React.useState<IAppState>({
     user: userMocks[1],
@@ -49,37 +51,6 @@ function App() {
     isLoading: false,
     message: 'initial State',
   })
-
-  const apiUrl = 'https://api.github.com/users'
-
-  React.useEffect(() => {
-    const mqList = window.matchMedia('(prefers-color-scheme: dark)')
-    mqList.addEventListener('change', handleMatchMedia)
-    setDarkMode(mqList.matches)
-    saveToStorage(mqList.matches)
-    return () => {
-      mqList.removeEventListener('change', handleMatchMedia)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  function saveToStorage(isDark: boolean) {
-    const themeChanged = !isDark ? 'light' : 'dark'
-    setTheme(themeChanged)
-    localStorage.setItem('theme', themeChanged)
-  }
-
-  function handleToggleTheme() {
-    const x = !isDarkMode
-    setDarkMode(x)
-    const theme = x
-    saveToStorage(theme)
-  }
-
-  function handleMatchMedia(mqList: MediaQueryListEvent) {
-    setDarkMode(mqList.matches)
-    saveToStorage(mqList.matches)
-  }
 
   async function handleAdd(value: string) {
     if (!value) {
@@ -102,22 +73,11 @@ function App() {
     }
   }
 
-  async function getUserToGithub(user: string) {
-    try {
-      const request: AxiosResponse<IUser> = await axios.get(`${apiUrl}/${user}`)
-      return request.data
-    } catch (error) {
-      throw new Error(`whoops cannot connect to api error: ${error}`)
-    }
-  }
-
   function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
     const value = event.currentTarget.search.value
     handleAdd(value)
   }
-
-  // if (!state.user) return <h1>Not Find User</h1>
 
   return (
     <div className={classnames('app', theme)}>
@@ -156,7 +116,7 @@ function App() {
                   insetInlineEnd: '20%',
                 }}
               >
-                error
+                Please enter a valid name
               </span>
             )}
             <Button action='primary'>search</Button>
@@ -239,6 +199,7 @@ function App() {
                           </Ellipsis>
                         </ItemBadge>
                       )}
+
                       <ItemBadge
                         title={state.user.twitter_username}
                         src={TwitterIcon}
@@ -262,6 +223,7 @@ function App() {
                           </Ellipsis>
                         </a>
                       </ItemBadge>
+
                       {state.user.company && (
                         <ItemBadge
                           title={state.user.company}
