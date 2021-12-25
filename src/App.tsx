@@ -217,7 +217,7 @@ function App() {
                           <Ellipsis>
                             {`${
                               state.user.twitter_username
-                                ? state.user.twitter_username
+                                ? `@${state.user.twitter_username}`
                                 : 'not available'
                             }`}
                           </Ellipsis>
