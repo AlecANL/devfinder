@@ -7,5 +7,5 @@
 }
 
 .dark .input {
-  @apply bg-color-port-gore placeholder:text-color-white;
+  @apply bg-color-port-gore placeholder:text-color-white text-color-white-2;
 }

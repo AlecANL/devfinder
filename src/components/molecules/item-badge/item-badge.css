@@ -1,6 +1,7 @@
 .item-badge {
   @apply text-color-azure
   flex
+  min-w-0
     items-center
     gap-5
     py-1

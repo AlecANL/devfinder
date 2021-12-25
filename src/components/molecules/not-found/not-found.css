@@ -1,0 +1,7 @@
+.not-found {
+  @apply flex 
+  w-full
+    flex-col
+    gap-4
+    items-center;
+}

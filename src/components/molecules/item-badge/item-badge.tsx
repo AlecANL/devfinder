@@ -10,13 +10,14 @@ interface IItemBadgeProps {
   alt?: string
   children: React.ReactNode
   className?: string
+  title?: string
 }
 
 export function ItemBadge(props: IItemBadgeProps) {
-  const { src, alt, children, className } = props
+  const { src, alt, children, className, ...otherProps } = props
 
   return (
-    <li className={classnames('item-badge', className)}>
+    <li className={classnames('item-badge', className)} {...otherProps}>
       {src && alt && <Picture src={src} alt={alt} width={20} height={20} />}
       {children}
     </li>
